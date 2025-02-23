@@ -15,11 +15,11 @@ Para demostrar que un problema es NP-completo se requieren dos pasos principales
    - Esto significa que el problema es al menos tan difícil como cualquier otro problema en NP.
    - Se logra mostrando que un problema conocido como NP-completo se puede reducir en tiempo polinomial al problema en cuestión.
 
-## Ejercicio 0: Demostrar que k coloring es Np completo K>= 3
+## Ejercicio 0: Demostrar que k-coloring es NP-completo (K≥3)
 
-3_coloring es np completo
+3-coloring es NP-completo
 
-### Demostrar que está en  NP
+### Demostrar que está en NP
 
 El problema de la k-coloración de grafos está en NP porque, dado un grafo G y k colores, un certificado de que la respuesta es "sí" es una asignación de colores a los vértices. Para verificar este certificado en tiempo polinomial, se puede comprobar que se utilizan como máximo k colores y que ningún par de nodos adyacentes (unidos por una arista) recibe el mismo color. Ambas verificaciones se pueden realizar en tiempo lineal respecto al número de vértices y aristas del grafo, lo que demuestra que el problema pertenece a la clase NP.
 
@@ -116,34 +116,59 @@ Para demostrar que k-coloring es NP-completo para k > 3:
 
 Por lo tanto, k-coloring es NP-completo para todo k ≥ 3.
 
+## Problema del número cromático
 
-###  El Problema del Clique Máximo
+El número cromático de un grafo es el número mínimo de colores necesarios para colorear los vértices del grafo de manera que ningún par de vértices adyacentes (conectados por una arista) compartan el mismo color.
+
+Matemáticamente, para un grafo G = (V, E), el número cromático (denotado como χ(G)) es el número más pequeño de colores que necesitamos para pintar todos los vértices de manera que ningún par de vértices conectados por una arista tengan el mismo color.
+
+El problema consiste en encontrar el número cromático de un grafo.
+
+### Pertenencia o no a NP:
+    No se conoce ningún algoritmo que permita determinar en tiempo polinomial para un k y un grafo si este k es su número cromático.
+
+### Pertenencia a NP-Hard
+Podemos asegurar la pertenencia de este problema al conjunto de problemas NP-hard porque podemos reducirlo polinomialmente desde 3-coloring, un problema que demostramos NP-completo anteriormente.
+
+El problema del número cromático se puede interpretar como una generalización del problema de 3-coloreo, particularmente el caso en que el número cromático sea 3.
+La entrada del problema del número cromático será la misma que la de 3-coloring, un grafo como una colección de nodos y aristas.
+
+Y la salida del número cromático obtenemos la cantidad mínima de colores necesarios para colorear el grafo cumpliéndose la condición inicial de este problema, a continuación se muestra cómo se mapea esta solución al problema de 3-coloreo
+
+* Si el número cromático es mayor que 3 o menor o igual a 3, entonces 3-coloring es true, esto ocurre por la propiedad de los grafos de que si son k-coloreables también serán C-coloreables con C>K
+* En caso contrario ocurre que 3-coloring es false
+
+### Luego
+Resolver el problema del Número Cromático nos permite resolver el problema de 3-coloring por tanto este problema pertenece a la clase de problemas NP-duros pero no se puede asegurar la NP-completitud dado que no se conoce algoritmo que en tiempo polinomial verifique una solución de este problema. 
+
+
+## El Problema del Clique Máximo
 
 El objetivo es identificar el clique más grande dentro de un grafo dado. Este problema presenta particularidades interesantes desde la perspectiva de la complejidad computacional.
 
-###  Análisis de Complejidad
+### Análisis de Complejidad
 
-####  Pertenencia a NP
+#### Pertenencia a NP
 
 A diferencia de variantes como el problema k-Clique, no existe una demostración conocida que establezca la pertenencia del problema del clique máximo a la clase NP. Esto se debe a la naturaleza particular del problema y las limitaciones actuales en la teoría de la complejidad computacional.
 
-####  Demostración de NP-Dureza
+#### Demostración de NP-Dureza
 
 La NP-dureza del problema se establece mediante una reducción polinomial desde el problema k-Clique, que es NP-Completo.
 
-#####  Reducción desde k-Clique
+##### Reducción desde k-Clique
 
 La reducción se construye de la siguiente manera:
 
 1. **Entrada**: Un grafo G = (V, E) y un entero k
 2. **Transformación**: 
-  - La entrada para el problema del clique máximo es simplemente el grafo G = (V, E)
-  - Se resuelve el problema del clique máximo para obtener el clique más grande y su tamaño
+   - La entrada para el problema del clique máximo es simplemente el grafo G = (V, E)
+   - Se resuelve el problema del clique máximo para obtener el clique más grande y su tamaño
 
 3. **Conversión de la solución**:
-  - Si el tamaño del clique máximo es mayor o igual que  k, entonces k-Clique es verdadero, ya que si existe un clique de tamaño t > k tambien existe un clique de tamaño.
-  - Si el tamaño del clique máximo es menor que k, entonces k-Clique es falso
+   - Si el tamaño del clique máximo es mayor o igual que  k, entonces k-Clique es verdadero, ya que si existe un clique de tamaño t > k tambien existe un clique de tamaño k.
+   - Si el tamaño del clique máximo es menor que k, entonces k-Clique es falso
 
-#####  Conclusión
+##### Conclusión
 
 Dado que k-Clique es NP-Completo y hemos establecido una reducción polinomial al problema del clique máximo, podemos concluir que el problema del clique máximo es NP-Duro.
