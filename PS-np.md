@@ -125,7 +125,7 @@ Matemáticamente, para un grafo G = (V, E), el número cromático (denotado como
 El problema consiste en encontrar el número cromático de un grafo.
 
 ### Pertenencia o no a NP:
-    No se conoce ningún algoritmo que permita determinar en tiempo polinomial para un k y un grafo si este k es su número cromático.
+No se conoce ningún algoritmo que permita determinar en tiempo polinomial para un k y un grafo si este k es su número cromático.
 
 ### Pertenencia a NP-Hard
 Podemos asegurar la pertenencia de este problema al conjunto de problemas NP-hard porque podemos reducirlo polinomialmente desde 3-coloring, un problema que demostramos NP-completo anteriormente.
@@ -172,3 +172,22 @@ La reducción se construye de la siguiente manera:
 ##### Conclusión
 
 Dado que k-Clique es NP-Completo y hemos establecido una reducción polinomial al problema del clique máximo, podemos concluir que el problema del clique máximo es NP-Duro.
+
+## Cobertura de Clique
+
+Dado un grafo \( G = (V, E) \), una cobertura de cliques es un conjunto de cliques $\left( C_1, C_2, \dots, C_k \right)$
+ tal que cada arista $\( (u, v) \in E \) pertenece a al menos uno de estos cliques.
+
+El objetivo del problema de cobertura de cliques es encontrar el número mínimo de cliques necesarios para cubrir todas las aristas del grafo.
+
+### Pertenencia o no a NP
+Dado un conjunto de cliques, es posible determinar en tiempo polinomial si en este conjunto están cubiertas todas las aristas del grafo.
+
+### Pertenencia o no a NP-duro
+Haremos una reducción desde el problema del número cromático. El problema del número cromático busca el número mínimo de colores necesarios tal que no haya dos nodos adyacentes con el mismo color. 
+
+Podemos darnos cuenta de que un conjunto de nodos con el mismo color es un conjunto independiente de nodos, ya que son nodos que no son adyacentes. Luego, un conjunto de vértices de un grafo es un clique si y solo si el mismo conjunto de nodos en el grafo complementario es un conjunto independiente. Por lo tanto, si hallamos la menor cantidad de colores para el grafo complementario, hallamos a su vez la menor cantidad de cliques que abarquen todas las aristas del grafo original.
+
+Dado un grafo, construimos el grafo complementario en tiempo polinomial. La entrada para el problema será $G^c$. Luego de resolver la cobertura de clique con $G^c$, obtenemos un \( k \) que coincide con el menor número de cliques necesarios para cubrir todas las aristas del grafo. Este número es equivalente a su número cromático. Así, resolver el problema de cobertura de clique nos permite conocer el número cromático de \( G \), completando su reducción.
+
+Como el problema del número cromático es NP-completo, la cobertura de clique es NP-dura. Y como demostramos anteriormente que está en NP, la cobertura de clique es NP-completo.
