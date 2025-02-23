@@ -116,32 +116,34 @@ Para demostrar que k-coloring es NP-completo para k > 3:
 
 Por lo tanto, k-coloring es NP-completo para todo k ≥ 3.
 
-## Ejercicio 2: Clique de Tamaño Máximo
 
-Realizaremos una reducción desde el problema de Clique de tamaño k, que ya es conocido como NP-Completo
+###  El Problema del Clique Máximo
 
-### Paso 1: Definición del Problema de Clique de Tamaño k
+El objetivo es identificar el clique más grande dentro de un grafo dado. Este problema presenta particularidades interesantes desde la perspectiva de la complejidad computacional.
 
-Dado un grafo G con n vértices, un parámetro k, y un conjunto W de k vértices, verificar que cada
-par de vértices en W está conectado en G puede verificarse en tiempo polinomial, lo que implica que
-Clique pertenece a NP.
+###  Análisis de Complejidad
 
-### Paso 2: Reducción al Problema de Clique Máximo
+####  Pertenencia a NP
 
-Para demostrar que el problema de encontrar un clique máximo es NP-completo, usamos la siguiente estrategia:
+A diferencia de variantes como el problema k-Clique, no existe una demostración conocida que establezca la pertenencia del problema del clique máximo a la clase NP. Esto se debe a la naturaleza particular del problema y las limitaciones actuales en la teoría de la complejidad computacional.
 
-**Entrada del Problema de Clique de Tamaño k:**
+####  Demostración de NP-Dureza
 
-- Un grafo G
-- Un entero k
+La NP-dureza del problema se establece mediante una reducción polinomial desde el problema k-Clique, que es NP-Completo.
 
-**Transformación:**
+#####  Reducción desde k-Clique
 
-- Se usa el mismo grafo G como entrada para el problema de encontrar un clique máximo
-- No se necesita transformar el grafo, ya que el problema de encontrar un clique máximo busca el subgrafo completo más grande en G
+La reducción se construye de la siguiente manera:
 
-**Solución:**
-Si el algoritmo para encontrar un clique máximo en G devuelve un clique de tamaño al menos k, entonces el grafo G tiene un clique de tamaño k.
+1. **Entrada**: Un grafo G = (V, E) y un entero k
+2. **Transformación**: 
+  - La entrada para el problema del clique máximo es simplemente el grafo G = (V, E)
+  - Se resuelve el problema del clique máximo para obtener el clique más grande y su tamaño
 
-**Conclusión:**
-Si podemos resolver el problema de encontrar un clique máximo, podemos resolver el problema de Clique de tamaño k verificando si el tamaño del clique máximo es al menos k. Esto demuestra que el problema de encontrar un clique máximo es al menos tan difícil como el problema de Clique de tamaño k, y por lo tanto, es NP-duro
+3. **Conversión de la solución**:
+  - Si el tamaño del clique máximo es mayor o igual que  k, entonces k-Clique es verdadero, ya que si existe un clique de tamaño t > k tambien existe un clique de tamaño.
+  - Si el tamaño del clique máximo es menor que k, entonces k-Clique es falso
+
+#####  Conclusión
+
+Dado que k-Clique es NP-Completo y hemos establecido una reducción polinomial al problema del clique máximo, podemos concluir que el problema del clique máximo es NP-Duro.
