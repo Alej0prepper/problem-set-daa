@@ -191,3 +191,36 @@ Podemos darnos cuenta de que un conjunto de nodos con el mismo color es un conju
 Dado un grafo, construimos el grafo complementario en tiempo polinomial. La entrada para el problema será $G^c$. Luego de resolver la cobertura de clique con $G^c$, obtenemos un \( k \) que coincide con el menor número de cliques necesarios para cubrir todas las aristas del grafo. Este número es equivalente a su número cromático. Así, resolver el problema de cobertura de clique nos permite conocer el número cromático de \( G \), completando su reducción.
 
 Como el problema del número cromático es NP-completo, la cobertura de clique es NP-dura. Y como demostramos anteriormente que está en NP, la cobertura de clique es NP-completo.
+
+## Conjunto Dominante 
+## 6. Conjunto Dominante
+
+Conjunto Dominante
+
+En un grafo G = ( V , E ) , un conjunto de vértices D ⊆ V es un conjunto dominante si cada vértice de V que no está en D es adyacente a al menos un vértice en D .
+
+Una partición de los vértices V en k conjuntos D 1 , D 2 , … , D k ​ es una partición domática si cada D i ​ (para i = 1 , 2 , … , k ) es un conjunto dominante. El numero dominante es la cardinalidad del menor conjunto dominante de G .
+
+Hallar el numero dominante de G .
+
+### Pertenencia a NP
+Dado un conjunto D podemos verificar si "domina" a todos los vertices del grafo
+
+### Pertenencia a NP-duro
+haremos una reducción desde el problema de Vertex Cover que es un conocido problema NP-completo.
+Construiremos un Grafo G' = (V',E') que cumplirá con lo siguiente:
+    V' = contiene todos los vértices de V y, además, por cada arista (u,v) que pertenece a E, tendrá un nuevo vértice w 
+    E' = incluye todas las aristas de E y, por cada arista (u,v), anadira al conjunto las aristas (u,w) y (w,v).
+
+La construcción de este grafo se puede hacer en tiempo polinomial
+
+Probemos en primera instancia que 
+* S es un vertex cover de G => S es un conjunto dominante de G'
+
+dado que S es un vertex cover de G, cada arista tiene al menos un extremo en S. Consideremos v que pertenece a G'. Si v es un nodo de G, entonces o v pertenece a S o existe una arista que conecta a v con un nodo u que pertenece a S, luego hay un nodo adyacente a v en S, entonces v está cubierto por algún elemento de S. Por otra parte, si w es un nodo adicional en G', entonces tiene dos nodos adyacentes u y v que pertenecen a G, por lo mismo, uno de ellos está en S, entonces los nodos adicionales también están cubiertos por S. Entonces, si G tiene un vertex cover => G' tendrá un conjunto dominante de al menos el mismo tamaño.
+
+* D es un conjunto dominante de tamaño k en G' => en G existe un vertex cover de tamaño a lo sumo k
+
+Si D es un conjunto dominante de tamaño k en G', consideremos todos los vértices adicionales w que pertenecen a D. Luego w está conectado solo a dos nodos, u y v, y podemos reemplazar a w de forma segura por v o u y seguir dominando a todos los vértices que w dominaba anteriormente, luego podemos eliminar todos los vértices adicionales de la forma descrita, así nos quedaría un conjunto D modificado que, por el mismo razonamiento, seguiría siendo un conjunto dominante, luego si G' tiene un conjunto dominante de tamaño k, entonces G tiene un vertex cover de a lo sumo tamaño k.
+
+Luego, el problema del conjunto dominante pertenece a NP y a NP-duro, entonces es NP-completo.
