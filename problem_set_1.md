@@ -175,8 +175,8 @@ Dado que k-Clique es NP-Completo y hemos establecido una reducción polinomial a
 
 ## Cobertura de Clique
 
-Dado un grafo \( G = (V, E) \), una cobertura de cliques es un conjunto de cliques $\left( C_1, C_2, \dots, C_k \right)$
- tal que cada arista $\( (u, v) \in E \) pertenece a al menos uno de estos cliques.
+Dado un grafo $G = (V, E)$ , una cobertura de cliques es un conjunto de cliques $\left( C_1, C_2, \dots, C_k \right)$
+ tal que cada arista $(u, v) \in E$ pertenece a al menos uno de estos cliques.
 
 El objetivo del problema de cobertura de cliques es encontrar el número mínimo de cliques necesarios para cubrir todas las aristas del grafo.
 
