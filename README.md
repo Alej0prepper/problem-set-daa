@@ -1,1 +1,5 @@
-Repo is already under construction, soon it will have more resolved problems 
+Problems Sets
+
+Alejandro Alvarez Lamazares
+
+Frank Perez Fleita
