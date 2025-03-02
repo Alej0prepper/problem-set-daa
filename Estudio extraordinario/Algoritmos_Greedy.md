@@ -68,3 +68,13 @@ Si hubiera una posición a la que no pudiéramos llegar después de haber saltad
 Conclusión
 
 Nuestra variante greedy nos da la mejor solución porque siempre maximiza el progreso hacia la última piedra sin sacrificar la capacidad de alcanzar cualquier otra posición que fuera accesible desde la posición original. Esto se debe a que el problema no presenta situaciones en las que quedarse en una posición menos favorable ofrezca una ventaja significativa a largo plazo que no pueda ser compensada por saltar a la posición más lejana disponible.
+
+## Activity Selection Problem
+
+Es el mismo razonamiento del ejercicio anterior pero a la inversa como si se quisieran maximizar la cantidad de saltos.
+
+Para maximizar el número de actividades que no se superpongan, se utiliza un enfoque greedy basado en ordenar las actividades por su tiempo de finalización. Este enfoque es óptimo porque seleccionar la actividad que termina primero permite iniciar otra actividad lo antes posible.
+
+La única forma en que seleccionar la actividad que termina antes no sería la mejor opción sería si una actividad más tardía ofreciera una ventaja significativa, como prioridades o nuevas actividades desbloqueadas. Sin embargo, en este problema, cualquier actividad que pueda realizarse después de una actividad tardía también puede realizarse después de una actividad más corta. Además, entre la actividad corta y la tardía, pueden existir otras actividades que no se podrían realizar si se elige la actividad más tardía.
+
+Por lo tanto, ordenar las actividades por su tiempo de finalización y seleccionar siempre la que termina primero garantiza una solución óptima.
